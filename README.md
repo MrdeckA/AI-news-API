@@ -33,6 +33,20 @@ You can choose website about many subject like:
 
 This project involves creating a Flask API that provides news related to artificial intelligence (AI). We use web scraping techniques to retrieve OpenAI blog post information and VADER-based sentiment analysis.
 
+## Get Started
+
+Make sure you have installed all the necessary dependencies by running the following command in your terminal :
+
+```bash
+pip install -r requirements.txt
+```
+
+Start development server by running the following command :
+
+```bash
+python server.py
+```
+
 ## Features/Endpoints
 
 ### Recovery of items
