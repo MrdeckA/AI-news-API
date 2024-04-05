@@ -7,20 +7,20 @@ app = Flask(__name__)
 @app.route("/get_data")
 def get_data():
     """
-    Récupère une liste de tous les articles disponibles.
+    Retrieves a list of all available articles.
     
     Returns:
-        list: Une liste des titres des articles disponibles.
+        list: A list of titles of available articles.
     """
     return jsonify(get_openai_blog_posts_titles())
 
 @app.route("/articles")
 def get_articles():
     """
-    Affiche des informations sur tous les articles disponibles.
+    Displays information on all available articles.
     
     Returns:
-        dict: Un dictionnaire contenant le nombre total d'articles et les détails de chaque article.
+        dict: A dictionary containing the total number of articles and details of each article.
     """
     posts = get_openai_blog_posts()
     return jsonify({'total': len(posts), 'posts': posts})
@@ -28,13 +28,13 @@ def get_articles():
 @app.route("/article/<int:number>")
 def get_article(number):
     """
-    Affiche le contenu d'un article spécifié par son numéro.
+    Displays the content of a specified article by its number.
     
     Args:
-        number (int): Le numéro de l'article à récupérer.
+        number (int): The number of the article to retrieve.
         
     Returns:
-        dict: Un dictionnaire contenant les détails de l'article, y compris son contenu.
+        dict: A dictionary containing details of the article, including its content.
     """
     posts = get_openai_blog_posts()
     post = next((post for post in posts if post["id"] == number), None)
@@ -48,13 +48,13 @@ def get_article(number):
 @app.route("/ml/<int:number>")
 def get_sentiment(number):
     """
-    Exécute un script d'analyse de sentiment pour analyser un article.
+    Executes a sentiment analysis script to analyze an article.
     
     Args:
-        number (int): Le numéro de l'article à analyser.
+        number (int): The number of the article to analyze.
         
     Returns:
-        dict: Un dictionnaire contenant les détails de l'article et son sentiment détecté.
+        dict: A dictionary containing details of the article and its detected sentiment.
     """
     post = analyse_sentiment_for_a_post(number)
     return jsonify(post)
